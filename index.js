@@ -39,10 +39,11 @@ var converter = function(basePath){
           }
 
           // #include
-          var inc = /^\/\/#include "(.*?)"$/gi;
+          var inc = /^\/\/#include ["'](.*?)["']$/gi;
           if(source.match(inc)){
             var m = inc.exec(source);
-            var p = baseDir+'/'+m[1];
+            var p = require('path').resolve(baseDir,m[1]);
+            console.log(p);
             if(fs.existsSync(p)){
               var src = fs.readFileSync(p);
               node.update(src);
