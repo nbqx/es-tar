@@ -1,7 +1,7 @@
 {
   "name": "es-tar",
   "description": "include `#include` extend-script file to standalone executable extend-script",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "nbqx",
   "bin": "bin/cmd.js",
   "repository": {

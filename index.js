@@ -43,7 +43,6 @@ var converter = function(basePath){
           if(source.match(inc)){
             var m = inc.exec(source);
             var p = require('path').resolve(baseDir,m[1]);
-            console.log(p);
             if(fs.existsSync(p)){
               var src = fs.readFileSync(p);
               node.update(src);
