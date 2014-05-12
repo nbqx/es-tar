@@ -1,7 +1,7 @@
 {
   "name": "es-tar",
   "description": "include `#include` extend-script file to standalone executable extend-script",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "nbqx",
   "bin": "bin/cmd.js",
   "repository": {
@@ -19,7 +19,7 @@
     "through2": "^0.4.1",
     "byline": "^4.1.1",
     "yargs": "^1.2.1",
-    "cli-color": "^0.2.3"
+    "lodash.reduce": "^2.4.1"
   },
   "devDependencies": {
     "mocha": "~1.18.2",

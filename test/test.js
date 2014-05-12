@@ -23,6 +23,13 @@ describe('es-tar',function(){
     });
   });
 
+  it('should be same content in `estar.sync`',function(done){
+    var out = estar.sync(mainJsxPath,{encoding:'utf8'});
+    var res = fs.readFileSync(__dirname+'/result.txt')+'';
+    out.should.be.equal(res);
+    done();
+  });
+
   after(function(done){
     fs.unlink(outPath,function(){
       done();
