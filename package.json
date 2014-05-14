@@ -19,6 +19,7 @@
     "through2": "^0.4.1",
     "byline": "^4.1.1",
     "yargs": "^1.2.1",
+    "cli-color": "^0.3.2",
     "lodash.reduce": "^2.4.1"
   },
   "devDependencies": {

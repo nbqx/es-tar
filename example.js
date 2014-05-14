@@ -1,5 +1,5 @@
 var fs = require('fs');
-var estar = require('.');
+var estar = require(__dirname);
 
 var jsxPath = __dirname+'/jsx/test.jsx';
 var out = __dirname+'/build.jsx';
