@@ -30,6 +30,13 @@ describe('es-tar',function(){
     done();
   });
 
+  it('should be same in nested #include scripts',function(done){
+    var out = estar.sync(__dirname+'/fixtures/one.jsx',{encoding:'utf8'});
+    var res = fs.readFileSync(__dirname+'/one-two-three-result.txt')+'';
+    out.should.be.equal(res);
+    done();
+  });
+
   after(function(done){
     fs.unlink(outPath,function(){
       done();

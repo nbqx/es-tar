@@ -1,0 +1,6 @@
+#target InDesign-7.0
+var three = "this is 3";
+
+var two = "this is 2";
+
+var one = "this is 1";

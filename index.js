@@ -22,7 +22,7 @@ var commentOut = through2(function(chunk,enc,next){
   next();
 });
 
-var _converter = function(code,basePath){
+var _converter = function(code,opts,basePath){
   var baseDir = path.dirname(path.resolve(basePath));
   var out = falafel(code,{comment:true},function(node){
     
@@ -42,8 +42,7 @@ var _converter = function(code,basePath){
         var m = inc.exec(source);
         var p = require('path').resolve(baseDir,m[1]);
         if(fs.existsSync(p)){
-          var src = fs.readFileSync(p);
-          node.update(src);
+          node.update(estar.sync(p,opts));
         }
       }
     }
@@ -52,7 +51,7 @@ var _converter = function(code,basePath){
   return out;
 };
 
-var converter = function(basePath){
+var converter = function(basePath,opts){
   var ret = [];
   
   return through2(
@@ -61,7 +60,7 @@ var converter = function(basePath){
     },
     function(n){
       var code = ret.join('');
-      var out = _converter(code,basePath);
+      var out = _converter(code,opts,basePath);
       this.push(out.toString());
       n();
     });
@@ -69,7 +68,7 @@ var converter = function(basePath){
 
 function estar(path,opts){
   var stream = fs.createReadStream(path,opts);
-  return byline(stream).pipe(commentOut).pipe(converter(path));
+  return byline(stream).pipe(commentOut).pipe(converter(path,opts));
 };
 
 estar.sync = function(path,opts){
@@ -81,7 +80,7 @@ estar.sync = function(path,opts){
     return m
   },'');
 
-  ret = _converter(ret,path);
+  ret = _converter(ret,opts,path);
 
   return ret.toString();
 };
